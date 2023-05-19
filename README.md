@@ -1,1 +1,3 @@
-# spring-hackathon-23
+# The Game of Music
+
+Rawr :)
