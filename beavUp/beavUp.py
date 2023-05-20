@@ -65,6 +65,8 @@ class Player:
 player = Player(screen_width // 2, floor_y - 50, 50, 50, 5, 15, (255, 255, 255))
 player.y = floor_y - player.height
 
+#Generate Platforms
+
 #Create NPCs
 coug_phrase = gpt.dialogue("cougar", "Billy Bob", "hungry and annoyed")
 duck_phrase = gpt.dialogue("duck", "Dr. Quack", "silly, tired, and anxious")
