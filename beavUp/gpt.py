@@ -1,7 +1,7 @@
 import os
 import openai
 import requests
-openai.api_key = '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'
+openai.api_key = '*'
 
 #FUNCTION: NPC Dialogue Generation
 #INPUTS: Type, Name, Personality Attributes
