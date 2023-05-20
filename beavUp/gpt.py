@@ -1,6 +1,6 @@
 import os
 import openai
-openai.api_key = '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'
+openai.api_key = '*'
 
 #FUNCTION: NPC Dialogue Generation
 #INPUTS: Type, Name, Personality Attributes
@@ -39,4 +39,5 @@ def newImage(subject):
 
     return response['data'][0]['url']
 
-
+#gen_image = newImage("mountain in Oregon")
+#print(gen_image)
