@@ -12,7 +12,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('beavUp')
 
 # load images
-# beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
+beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
 #ImageGen: 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
 
 gpt.newImage('down a mountain in Oregon', 'assets/bg.png') #AI-generated image
@@ -28,7 +28,7 @@ floor_color = (0, 255, 0)
 
 class Player:
     def __init__(self, x, y, width, height, speed, jump_height, color):
-        #self.image = pygame.transform.scale(beavy_image, (45, 45))
+        self.image = pygame.transform.scale(beavy_image, (150, 150))
         self.x = x
         self.y = y
         self.width = width
@@ -58,19 +58,22 @@ class Player:
                 self.y = floor_y - self.height
 
     def draw(self, surface):
-        pygame.draw.rect(surface, self.color, pygame.Rect(self.x, self.y, self.width, self.height))
+            #Displays a cube
+            #pygame.draw.rect(surface, self.color, pygame.Rect(self.x, self.y, self.width, self.height))
 
+            #Displays the sprite image
+            screen.blit(self.image, (self.x, self.y))
 
 # Create Player
-player = Player(screen_width // 2, floor_y - 50, 50, 50, 5, 15, (255, 255, 255))
+player = Player(screen_width // 2, floor_y - 50, 100, 50, 5, 15, (255, 255, 255))
 player.y = floor_y - player.height
 
 #Generate Platforms
 
 #Create NPCs
-coug_phrase = gpt.dialogue("cougar", "Billy Bob", "hungry and annoyed")
-duck_phrase = gpt.dialogue("duck", "Dr. Quack", "silly, tired, and anxious")
-turtle_phrase = gpt.dialogue("mutant turtle", "Donatello", "funny, hungry, and feeling purple")
+#coug_phrase = gpt.dialogue("cougar", "Billy Bob", "hungry and annoyed")
+#duck_phrase = gpt.dialogue("duck", "Dr. Quack", "silly, tired, and anxious")
+#turtle_phrase = gpt.dialogue("mutant turtle", "Donatello", "funny, hungry, and feeling purple")
 
 
 while True:
