@@ -3,29 +3,60 @@ import pygame, sys
 pygame.init()
 clock = pygame.time.Clock()
 
-#Game Screen
-screen_width = 1280
+# Game Screen Info
+screen_width = 1024
 screen_height = 720
 screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption('beavUp')
 
-#Floor dimensions
+# load images
+# beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
+bg_image = pygame.image.load('assets/bg.png').convert_alpha()
+
+# Floor dimensions
 floor_height = screen_height // 6
 floor_y = screen_height - floor_height
 floor_color = (0, 255, 0)
 
-#Block Dimensions
-block_width = 50
-block_height = 50
 
-#block position
-block_x = screen_width // 2
-block_y = floor_y - block_height
-block_speed = 5
-jump_height = 15
-block_color = (255, 255, 255)
+class Player:
+    def __init__(self, x, y, width, height, speed, jump_height, color):
+        #self.image = pygame.transform.scale(beavy_image, (45, 45))
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.speed = speed
+        self.jump_height = jump_height
+        self.color = color
+        self.is_jumping = False
 
-is_jumping = False
+    def handle_keys(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:  # move left
+            self.x -= self.speed
+        if keys[pygame.K_RIGHT]:  # move right
+            self.x += self.speed
+        if not self.is_jumping:
+            if keys[pygame.K_UP] or keys[pygame.K_SPACE]: #activate jump
+                self.is_jumping = True
+                self.jump_counter = self.jump_height
 
+    def do_jump(self):
+        if self.is_jumping:
+            self.y -= self.jump_counter
+            self.jump_counter -= 1
+            if self.jump_counter < -self.jump_height:
+                self.is_jumping = False
+                self.y = floor_y - self.height
+
+    def draw(self, surface):
+        pygame.draw.rect(surface, self.color, pygame.Rect(self.x, self.y, self.width, self.height))
+
+
+# Create Player
+player = Player(screen_width // 2, floor_y - 50, 50, 50, 5, 15, (255, 255, 255))
+player.y = floor_y - player.height
 
 while True:
     for event in pygame.event.get():
@@ -33,42 +64,27 @@ while True:
             pygame.quit()
             sys.exit()
 
-    #Detect Input
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT]: #move left
-        block_x -= block_speed
-    if keys[pygame.K_RIGHT]: #move right
-        block_x += block_speed
+    # handle player actions
+    player.handle_keys()
+    player.do_jump()
 
-    #Block can only jump when it is NOT already jumping
-    if not is_jumping:
-        if keys[pygame.K_UP] or keys[pygame.K_SPACE]:
-            is_jumping = True
-            jump_counter = jump_height
-
-    #jumping
-    if is_jumping:
-        block_y -= jump_counter
-        jump_counter -= 1
-
-        if jump_counter < -jump_height:
-            is_jumping = False
-            block_y = floor_y - block_height
-
-    #block boundaries
-    if block_x < 0:
-        block_x = 0
-    if block_x > screen_width - block_width:
-        block_x = screen_width - block_width
-    if block_y < 0:
-        block_y = 0
-    if block_y > floor_y - block_height:
-        block_y = floor_y - block_height
+    # player boundaries
+    if player.x < 0:
+        player.x = 0
+    if player.x > screen_width - player.width:
+        player.x = screen_width - player.width
+    if player.y < 0:
+        player.y = 0
+    if player.y > floor_y - player.height:
+        player.y = floor_y - player.height
 
     # fill screen
     screen.fill((0, 0, 0))
+    screen.blit(bg_image, (0, 0))
     pygame.draw.rect(screen, floor_color, pygame.Rect(0, floor_y, screen_width, floor_height))
-    pygame.draw.rect(screen, block_color, pygame.Rect(block_x, block_y, block_width, block_height))
+
+    # draw player
+    player.draw(screen)
 
     pygame.display.flip()
     clock.tick(60)
