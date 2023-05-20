@@ -12,7 +12,7 @@ pygame.init()
 pygame.display.set_mode((800, 600))
 
 # Load the music file: You can change file path if you download from link above from your device
-pygame.mixer.music.load("/Users/aadi1_a1i/Downloads/1-04 Introductions.mp3")
+pygame.mixer.music.load("/Users/aadi1_a1i/Downloads/music/bgmusic.mp3")
 
 # Play the music in an infinite loop
 pygame.mixer.music.play(loops=-1)
