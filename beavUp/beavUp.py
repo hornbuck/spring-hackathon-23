@@ -18,6 +18,11 @@ floor_height = screen_height // 6
 floor_y = screen_height - floor_height
 floor_color = (0, 255, 0)
 
+# Initalize Music File
+pygame.mixer.init()
+pygame.mixer.music.load(...)
+pygame.mixer.music.play(loops =- 1)
+pygame.mixer.music.stop()
 
 class Player:
     def __init__(self, x, y, width, height, speed, jump_height, color):
