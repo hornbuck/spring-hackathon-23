@@ -15,13 +15,7 @@ pygame.display.set_caption('beavUp')
 # beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
 #ImageGen: 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
 
-url = gpt.newImage("down a mountain in Oregon with animals") #AI-generated image
-data = requests.get(url).content
-
-f = open("assets/bg.png", "wb")
-
-f.write(data)
-f.close()
+gpt.newImage('down a mountain in Oregon', 'assets/bg.png') #AI-generated image
 
 
 bg_image = pygame.image.load('assets/bg.png').convert_alpha()
