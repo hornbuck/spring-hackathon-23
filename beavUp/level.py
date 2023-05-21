@@ -2,6 +2,7 @@ import pygame
 from tiles import Tile
 from settings import tile_size, SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
+from npc import Npc
 
 class Level:
     def __init__(self, level_data, surface):
@@ -14,6 +15,7 @@ class Level:
     def setup_level(self, layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
+        self.npcs = pygame.sprite.Group()
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 x = col_index * tile_size
@@ -27,6 +29,9 @@ class Level:
                     y = row_index * tile_size
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
+                if cell == 'N':
+                    npc_sprite = Npc((x, y))
+                    self.npcs.add(npc_sprite)
 
     def scroll_x(self):
         player = self.player.sprite
@@ -90,6 +95,12 @@ class Level:
         self.tiles.draw(self.display_surface)
         self.scroll_x()
         self.scroll_y()
+
+        #npc
+        self.npcs.update(self.world_shift_x, self.world_shift_y)
+        self.vertical_move_collision()
+        self.horizontal_move_collision()
+        self.npcs.draw(self.display_surface)
 
         #player
         self.player.update()
