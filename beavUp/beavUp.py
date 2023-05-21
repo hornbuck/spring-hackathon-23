@@ -1,4 +1,5 @@
 import pygame, sys
+import gpt
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -10,9 +11,9 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('beavUp')
 
 # load images
-# beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
-gpt.newImage('Make a pixel style background of mountains in the far distance', 'assets/bg.png') #AI-generated image
+beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
 bg_image = pygame.image.load('assets/bg.png').convert_alpha()
+gpt.newImage('Make a pixel style background of mountains in the far distance', 'assets/bg.png') #AI-generated image
 
 # Floor dimensions
 floor_height = screen_height // 6
