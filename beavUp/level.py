@@ -1,7 +1,10 @@
 import pygame
+import setuptools.errors
+
 from tiles import Tile
 from settings import tile_size, SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
+from npc import Npc, Lion, Turtle
 
 class Level:
     def __init__(self, level_data, surface):
@@ -14,6 +17,9 @@ class Level:
     def setup_level(self, layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
+        self.npcs = pygame.sprite.GroupSingle()
+        self.lion = pygame.sprite.GroupSingle()
+        self.turtle_don = pygame.sprite.GroupSingle()
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 x = col_index * tile_size
@@ -27,36 +33,30 @@ class Level:
                     y = row_index * tile_size
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
+                if cell == 'N':
+                    npc_sprite = Npc((x, y))
+                    self.npcs.add(npc_sprite)
+                if cell == 'L':
+                    lion_sprite = Lion((x, y))
+                    self.lion.add(lion_sprite)
+                if cell == 'T':
+                    turtle_sprite = Turtle((x, y))
+                    self.turtle_don.add(turtle_sprite)
 
     def scroll_x(self):
         player = self.player.sprite
         player_x = player.rect.centerx
         direction_x = player.direction.x
 
-        if player_x < SCREEN_WIDTH // 4 and direction_x < 0:
-            self.world_shift_x = 5
+        if player_x < SCREEN_WIDTH / 4 and direction_x < 0:
+            self.world_shift_x = 8
             player.speed = 0
-        elif player_x > SCREEN_WIDTH - (SCREEN_WIDTH // 4) and direction_x > 0:
-            self.world_shift_x = -5
+        elif player_x > SCREEN_WIDTH - (SCREEN_WIDTH / 4) and direction_x > 0:
+            self.world_shift_x = -8
             player.speed = 0
         else:
             self.world_shift_x = 0
-            player.speed = 5
-
-    def scroll_y(self):
-        player = self.player.sprite
-        player_y = player.rect.centery
-        direction_y = player.direction.y
-
-        if player_y < SCREEN_HEIGHT // 2 and direction_y < 0:
-            self.world_shift_y = 5
-            player.speed = 0
-        elif player_y > SCREEN_HEIGHT - (SCREEN_HEIGHT // 2) and direction_y > 0:
-            self.world_shift_y = -5
-            player.speed = 0
-        else:
-            self.world_shift_y = 0
-            player.speed = 5
+            player.speed = 3
 
     def horizontal_move_collision(self):
         player = self.player.sprite
@@ -89,10 +89,30 @@ class Level:
         self.tiles.update(self.world_shift_x, self.world_shift_y)
         self.tiles.draw(self.display_surface)
         self.scroll_x()
-        self.scroll_y()
+
+        #npc
+        self.npcs.update(self.world_shift_x, self.world_shift_y)
+        self.vertical_move_collision()
+        self.horizontal_move_collision()
+        self.npcs.draw(self.display_surface)
 
         #player
         self.player.update()
         self.vertical_move_collision()
         self.horizontal_move_collision()
         self.player.draw(self.display_surface)
+
+        #bring player back to og position if out of bounds
+        if self.player.sprite.rect.y > SCREEN_HEIGHT:
+            self.player.sprite.reset_pos()
+        #lion
+        self.lion.update(self.world_shift_x, self.world_shift_y)
+        self.vertical_move_collision()
+        self.horizontal_move_collision()
+        self.lion.draw(self.display_surface)
+
+        #turtle
+        self.turtle_don.update(self.world_shift_x, self.world_shift_y)
+        self.vertical_move_collision()
+        self.horizontal_move_collision()
+        self.turtle_don.draw(self.display_surface)
