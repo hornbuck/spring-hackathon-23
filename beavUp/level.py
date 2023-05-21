@@ -2,7 +2,7 @@ import pygame
 from tiles import Tile
 from settings import tile_size, SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
-from npc import Npc
+from npc import Npc, Lion, Turtle
 
 class Level:
     def __init__(self, level_data, surface):
@@ -15,7 +15,9 @@ class Level:
     def setup_level(self, layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
-        self.npcs = pygame.sprite.Group()
+        self.npcs = pygame.sprite.GroupSingle()
+        self.lion = pygame.sprite.GroupSingle()
+        self.turtle_don = pygame.sprite.GroupSingle()
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 x = col_index * tile_size
@@ -32,6 +34,12 @@ class Level:
                 if cell == 'N':
                     npc_sprite = Npc((x, y))
                     self.npcs.add(npc_sprite)
+                if cell == 'L':
+                    lion_sprite = Lion((x, y))
+                    self.lion.add(lion_sprite)
+                if cell == 'T':
+                    turtle_sprite = Turtle((x, y))
+                    self.turtle_don.add(turtle_sprite)
 
     def scroll_x(self):
         player = self.player.sprite
@@ -107,3 +115,15 @@ class Level:
         self.vertical_move_collision()
         self.horizontal_move_collision()
         self.player.draw(self.display_surface)
+
+        #lion
+        self.lion.update(self.world_shift_x, self.world_shift_y)
+        self.vertical_move_collision()
+        self.horizontal_move_collision()
+        self.lion.draw(self.display_surface)
+
+        #turtle
+        self.turtle_don.update(self.world_shift_x, self.world_shift_y)
+        self.vertical_move_collision()
+        self.horizontal_move_collision()
+        self.turtle_don.draw(self.display_surface)
