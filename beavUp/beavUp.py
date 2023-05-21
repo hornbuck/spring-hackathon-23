@@ -12,7 +12,7 @@ pygame.display.set_caption('beavUp')
 # load images
 # beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
 bg_image = pygame.image.load('assets/bg.png').convert_alpha()
-gpt.newImage('down a mountain in Oregon', 'assets/bg.png') #AI-generated image
+gpt.newImage('Make a pixel style background of mountains in the far distance', 'assets/bg.png') #AI-generated image
 bg_image = pygame.image.load('assets/bg.png').convert_alpha()
 
 # Floor dimensions

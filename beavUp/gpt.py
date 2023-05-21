@@ -1,7 +1,7 @@
 import os
 import openai
 import requests
-openai.api_key = '*'
+openai.api_key = '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'
 
 #FUNCTION: NPC Dialogue Generation
 #INPUTS: Type, Name, Personality Attributes
@@ -35,7 +35,7 @@ def newImage(subject, path):
     response = openai.Image.create(
       prompt=str(subject),
       n=1,
-      size="1024x1024"
+      size="1024x720"
     )
 
     image_url = response['data'][0]['url']
