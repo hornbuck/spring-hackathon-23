@@ -1,6 +1,4 @@
 import pygame, sys
-import gpt
-import requests
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -12,12 +10,9 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('beavUp')
 
 # load images
-beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
-#ImageGen: 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
-
+# beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
+bg_image = pygame.image.load('assets/bg.png').convert_alpha()
 gpt.newImage('down a mountain in Oregon', 'assets/bg.png') #AI-generated image
-
-
 bg_image = pygame.image.load('assets/bg.png').convert_alpha()
 
 # Floor dimensions
@@ -25,6 +20,11 @@ floor_height = screen_height // 6
 floor_y = screen_height - floor_height
 floor_color = (0, 255, 0)
 
+# Initalize Music
+pygame.mixer.init()
+pygame.mixer.music.load(...)
+pygame.mixer.music.play(loops =- 1)
+pygame.mixer.music.stop()
 
 class Player:
     def __init__(self, x, y, width, height, speed, jump_height, color):
@@ -58,17 +58,15 @@ class Player:
                 self.y = floor_y - self.height
 
     def draw(self, surface):
-            #Displays a cube
-            #pygame.draw.rect(surface, self.color, pygame.Rect(self.x, self.y, self.width, self.height))
+        #Displays a cube
+        #pygame.draw.rect(surface, self.color, pygame.Rect(self.x, self.y, self.width, self.height))
 
-            #Displays the sprite image
-            screen.blit(self.image, (self.x, self.y))
+        #Displays the sprite image
+        screen.blit(self.image, (self.x, self.y))
 
 # Create Player
-player = Player(screen_width // 2, floor_y - 50, 100, 50, 5, 15, (255, 255, 255))
+player = Player(screen_width // 2, floor_y - 50, 50, 50, 5, 15, (255, 255, 255))
 player.y = floor_y - player.height
-
-#Generate Platforms
 
 #Create NPCs
 #coug_phrase = gpt.dialogue("cougar", "Billy Bob", "hungry and annoyed")
@@ -100,7 +98,7 @@ while True:
     screen.fill((0, 0, 0))
     screen.blit(bg_image, (0, 0))
     pygame.draw.rect(screen, floor_color, pygame.Rect(0, floor_y, screen_width, floor_height))
-    
+
     # draw player
     player.draw(screen)
 
