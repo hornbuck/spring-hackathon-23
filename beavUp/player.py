@@ -1,12 +1,18 @@
 import pygame
 
+# Loads sprite images
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 720
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
+beavy_opp = pygame.image.load('assets/beavy_opp.png').convert_alpha()
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
-        self.image = pygame.Surface((32, 64))
-        self.image.fill((0, 255, 255))
+        
+        self.image = pygame.transform.scale(beavy_image, (55, 55))
         self.rect = self.image.get_rect(topleft = pos)
-
 
         #player movement
         self.direction = pygame.math.Vector2(0, 0)
@@ -21,9 +27,14 @@ class Player(pygame.sprite.Sprite):
     def get_input(self):
         keys = pygame.key.get_pressed()
 
+        #Changes direction
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+            #Sprite change
+            self.image = pygame.transform.scale(beavy_image, (55, 55))
             self.direction.x = 1
         elif keys[pygame.K_LEFT] or keys[pygame.K_a]:
+            #Sprite change
+            self.image = pygame.transform.scale(beavy_opp, (55, 55))
             self.direction.x = -1
         else:
             self.direction.x = 0
