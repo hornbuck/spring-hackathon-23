@@ -1,4 +1,4 @@
-# The Game of Music
+# Super Beaver Bros: An AI Adventure
 
 Welcome! In this game you will select 1 of 4 sprites:
 beavy, who is our own OSU mascot, a turtle, a university of oregon duck, or a dangerous looking mountain lion!
