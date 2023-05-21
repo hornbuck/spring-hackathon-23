@@ -1,4 +1,5 @@
 import pygame, sys
+import gpt
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -10,8 +11,9 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('beavUp')
 
 # load images
-# beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
+beavy_image = pygame.image.load('assets/beavy.png').convert_alpha()
 bg_image = pygame.image.load('assets/bg.png').convert_alpha()
+gpt.newImage('Make a pixel style background of mountains in the far distance', 'assets/bg.png') #AI-generated image
 
 # Floor dimensions
 floor_height = screen_height // 6
@@ -26,7 +28,7 @@ pygame.mixer.music.stop()
 
 class Player:
     def __init__(self, x, y, width, height, speed, jump_height, color):
-        #self.image = pygame.transform.scale(beavy_image, (45, 45))
+        self.image = pygame.transform.scale(beavy_image, (150, 150))
         self.x = x
         self.y = y
         self.width = width
@@ -56,12 +58,21 @@ class Player:
                 self.y = floor_y - self.height
 
     def draw(self, surface):
-        pygame.draw.rect(surface, self.color, pygame.Rect(self.x, self.y, self.width, self.height))
+        #Displays a cube
+        #pygame.draw.rect(surface, self.color, pygame.Rect(self.x, self.y, self.width, self.height))
 
+        #Displays the sprite image
+        screen.blit(self.image, (self.x, self.y))
 
 # Create Player
 player = Player(screen_width // 2, floor_y - 50, 50, 50, 5, 15, (255, 255, 255))
 player.y = floor_y - player.height
+
+#Create NPCs
+#coug_phrase = gpt.dialogue("cougar", "Billy Bob", "hungry and annoyed")
+#duck_phrase = gpt.dialogue("duck", "Dr. Quack", "silly, tired, and anxious")
+#turtle_phrase = gpt.dialogue("mutant turtle", "Donatello", "funny, hungry, and feeling purple")
+
 
 while True:
     for event in pygame.event.get():
