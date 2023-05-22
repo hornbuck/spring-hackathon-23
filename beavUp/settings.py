@@ -1,14 +1,15 @@
 level_map = [
 'I         XXXXXXXXXXXXXXXXXX                                                            ',
 'I                                                         I',
+'I              T                                  XXXXXXXXXXXXXI',
+'I         XXXXXXXXXXXXXXXXXX  X  XXXXXXXXXXXXXXXXXXX  X                       I',
 'I                                                  X X X X   XXXXXXXXXXXX                      I',
-'I                                                 XXXXXXXXXXXXXXXXXXXXX        I',
+'IXXXXXXXXXXXXXXXXX                XXXXX                                 XXXXXXXXXXXXXXXXXXXXX        I',
 'I P                                                                        N                 X         I',
-'IXXXX XXXXXXXXXXXXX   XXX      X  XXXX      X                              XXXXXXXX              XXX   I',
-'I                 XXX       X            X X         XXX   XXXXXXXXXXXXX                          X      I',
-'I            L                                                        ',
-'I          XXXXXXXX   XXX   X                       X                                           XX',
-'I                               XXX          X                               XXXXXXXXXXX ',
+'IXXXXXXXXXXXXXXXXX         X  XXXX      X                              XXXXXXXX              XXX   I',
+'I                 X       X            X X         XXX   XXXXXXXXXXXXX                          X      I',
+'I                  X     X           L            X                                           XX',
+'I                   X  X            XXX          X                               XXXXXXXXXXX ',
 'I                 I                       XXXXXX                           ',
 'I                                            I                                                  ',
 'I                                            I                                                  ',
@@ -19,6 +20,9 @@ level_map = [
 'I                                          I                                                  ',
 'I                                            I                                                  ',
 '                                                    ']
+
+tile_size = 64
+SCREEN_WIDTH = 1024
 
 tile_size = 64
 SCREEN_WIDTH = 1024
