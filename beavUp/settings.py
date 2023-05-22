@@ -23,7 +23,4 @@ level_map = [
 
 tile_size = 64
 SCREEN_WIDTH = 1024
-
-tile_size = 64
-SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = len(level_map) * tile_size
