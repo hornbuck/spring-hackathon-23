@@ -2,7 +2,7 @@ import os
 import openai
 import requests
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 
 # FUNCTION: NPC Dialogue Generation
@@ -17,7 +17,7 @@ def dialogue(npc, name, personality):
         messages=[
             {"role": "user",
              "content": "You are " + str(name) + ", a " + str(personality) + str(npc) + "that gives directions to the "
-                                                                                        "top of the of the mountain to our protagonist, Beavy. Output some text of 20 words or less "
+                                                                                        "top of the of the mountain to our protagonist, Beavy. Output some text of 5 words or less"
                                                                                         "telling him to go to the top of the mountain, remember your personality!"}
         ]
     )

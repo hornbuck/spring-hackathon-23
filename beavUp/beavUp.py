@@ -22,7 +22,7 @@ pygame.mixer.music.play(loops=-1)
 
 # load images
 bg_image = pygame.image.load('assets/bg.png').convert_alpha()
-gpt.newImage('Make a pixel style background of mountains in the far distance', 'assets/bg.png') #AI-generated image
+#gpt.newImage('Make a pixel style background of mountains in the far distance', 'assets/bg.png') #AI-generated image
 
 # Runs the game
 while True:

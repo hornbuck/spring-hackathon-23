@@ -2,7 +2,25 @@ import pygame
 from tiles import Tile
 from settings import tile_size, SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
+from npc import Npc
+import gpt
 
+# Loads sprite images
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 720
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+turtle = pygame.image.load('assets/turtle.png').convert_alpha()
+cougar = pygame.image.load('assets/mountain lion.png').convert_alpha()
+duck = pygame.image.load('assets/betterduck.png').convert_alpha()
+
+# Load dialog images
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+turtle_speaker = pygame.image.load('assets/turtle_talk.png').convert_alpha()
+
+#AI Phrase Generation
+turtle_phrase = gpt.dialogue("mutant turtle", "Donatello", "funny, hungry, and feeling purple")
+#turtle_phrase = "Time to moooove, up the mountain!!!"
+        
 class Level:
     def __init__(self, level_data, surface):
         #level setup
@@ -14,6 +32,7 @@ class Level:
     def setup_level(self, layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
+        self.npcs = pygame.sprite.Group()
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 x = col_index * tile_size
@@ -27,6 +46,27 @@ class Level:
                     y = row_index * tile_size
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
+
+                #Turtle Sprite
+                if cell == 'T':
+                    self.turtle_npc = Npc((x, y), turtle, screen)
+                    self.npcs.add(self.turtle_npc)
+                    
+                    
+                #Cougar Sprite
+                if cell == 'C':
+                    self.cougar_npc = Npc((x, y), cougar, screen)
+                    self.npcs.add(self.cougar_npc)
+                    #AI Phrase Generation
+                    #coug_phrase = gpt.dialogue("cougar", "Billy Bob", "hungry and annoyed")
+
+                #Duck Sprite
+                if cell == 'D':
+                    self.duck_npc = Npc((x, y), duck, screen)
+                    self.npcs.add(self.duck_npc)
+                    #AI Phrase Generation
+                    #duck_phrase = gpt.dialogue("duck", "Dr. Quack", "silly, tired, and anxious")
+                    
 
     def scroll_x(self):
         player = self.player.sprite
@@ -90,6 +130,16 @@ class Level:
         self.tiles.draw(self.display_surface)
         self.scroll_x()
         self.scroll_y()
+
+        #npc
+        self.npcs.update(self.world_shift_x, self.world_shift_y)
+        self.vertical_move_collision()
+        self.horizontal_move_collision()
+        self.npcs.draw(self.display_surface)
+
+        #npc-dialogue
+        self.turtle_npc.print_dialogue(screen, SCREEN_WIDTH, SCREEN_HEIGHT, turtle_phrase, turtle_speaker)
+
 
         #player
         self.player.update()
