@@ -8,7 +8,7 @@ class Npc(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
 
-        self.image = pygame.transform.scale(duck_image, (55, 55))
+        self.image = pygame.transform.scale(duck_image, (100, 100))
         self.rect = self.image.get_rect(topleft=pos)
 
         self.direction = pygame.math.Vector2(0, 0)
@@ -29,7 +29,7 @@ class Npc(pygame.sprite.Sprite):
 class Lion(Npc):
     def __init__(self, pos):
         super().__init__(pos)
-        self.image = pygame.transform.scale(lion_image, (55, 55))
+        self.image = pygame.transform.scale(lion_image, (110, 100))
 
         self.direction = pygame.math.Vector2(0, 0)
         self.speed = 5
@@ -40,7 +40,7 @@ class Lion(Npc):
 class Turtle(Npc):
     def __init__(self, pos):
         super().__init__(pos)
-        self.image = pygame.transform.scale(turtle_image, (55, 55))
+        self.image = pygame.transform.scale(turtle_image, (100, 100))
 
         self.direction = pygame.math.Vector2(0, 0)
         self.speed = 5
