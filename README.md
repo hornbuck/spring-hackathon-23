@@ -30,12 +30,14 @@ Enjoy "Super Beaver Bros: An AI Adventure"! Navigate your beaver through the obs
 ## Credits
 
 -1meekah2
+
 -scotts_Tots
+
 -aadi1__
 
 ## Acknowledgements
 
-We would like to express our gratitude to [@ClearCode](https://www.youtube.com/@ClearCode) on YouTube and maintainers and contributors of [Pygame](https://www.pygame.org/wiki/about). Their tutorials and coding guides were invaluable resources in the development of our game.
+We would like to express our gratitude to [@ClearCode](https://www.youtube.com/@ClearCode) on YouTube and the maintainers and contributors of [Pygame](https://www.pygame.org/wiki/about). Their tutorials and coding guides were invaluable resources in the development of our game.
 
 // TODO: Add your team's names and any acknowledgements you'd like to include.
 
