@@ -29,13 +29,13 @@ Enjoy "Super Beaver Bros: An AI Adventure"! Navigate your beaver through the obs
 
 ## Credits
 
-- 1meekah2
+- Kaitlyn Hornbuckle: hornbuck@oregonstate.edu (Discord: 1meeka2)
 
-- scotts_Tots
+- scotts_Tots (Discord)
 
 - Aadil Ali: aliaad@oregonstate.edu
 
-- soo
+- soo (Discord)
 
 ## Acknowledgements
 
