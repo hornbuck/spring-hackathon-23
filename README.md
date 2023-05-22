@@ -29,11 +29,13 @@ Enjoy "Super Beaver Bros: An AI Adventure"! Navigate your beaver through the obs
 
 ## Credits
 
--1meekah2
+- 1meekah2
 
--scotts_Tots
+- scotts_Tots
 
--aadi1__
+- aadi1__
+
+- soo
 
 ## Acknowledgements
 
