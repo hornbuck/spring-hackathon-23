@@ -33,7 +33,7 @@ Enjoy "Super Beaver Bros: An AI Adventure"! Navigate your beaver through the obs
 
 - scotts_Tots
 
-- aadi1__
+- Aadil Ali: aliaad@oregonstate.edu
 
 - soo
 
