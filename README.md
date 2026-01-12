@@ -1,5 +1,7 @@
 # Super Beaver Bros: An AI Adventure
 
+<img width="1235" height="810" alt="Level Demo 1" src="https://github.com/user-attachments/assets/624659fe-bcfc-402b-a7cf-86809d830818" />
+
 ## Description
 
 Super Beaver Bros: An AI Adventure is a 2D platformer game, developed in Python using Pygame, designed for a hackathon with the theme of leveraging AI.
@@ -28,6 +30,8 @@ pip install pygame openai
 python beavUp.py
 ```
 Enjoy "Super Beaver Bros: An AI Adventure"! Navigate your beaver through the obstacles, engage with snarky NPCs, and make your way to victory!
+
+<img width="1101" height="772" alt="Level Demo 2" src="https://github.com/user-attachments/assets/1a3a9913-636b-4419-b02a-081b3f69ea47" />
 
 ## Credits
 
