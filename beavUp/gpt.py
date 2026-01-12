@@ -2,7 +2,7 @@ import os
 import openai
 import requests
 
-openai.api_key = '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'
+openai.api_key = 'xxxxxxx'
 
 
 # FUNCTION: NPC Dialogue Generation
