@@ -21,7 +21,7 @@ Once you've reached the Turtle, you've won! But don't worry, the fun doesn't hav
 ```
 pip install pygame openai
 ```
-3. You also need to generate your own OpenAI key (from here: https://platform.openai.com/account/api-keys). Then, inside the 'beavUp' folder, click the file: 'gpt.py' and replace the key on line 5. For security reasons, NEVER copy-paste the key as plaintext if you plan to publish code online. It is highly recommended to read the key as encrypted text from a separate file.
+3. You also need to generate your own OpenAI key (from here: https://platform.openai.com/account/api-keys). Then, inside the *beavUp* folder, click the file: *gpt.py* and replace the key on line 5. For security reasons, NEVER copy-paste the key as plaintext if you plan to publish code online. It is highly recommended to read the key as encrypted text from a separate file.
 
 4. Navigate to the directory where you stored the game files. Run beaver.py to start playing. You can do this from the command line:
 ```
