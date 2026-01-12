@@ -21,7 +21,9 @@ Once you've reached the Turtle, you've won! But don't worry, the fun doesn't hav
 ```
 pip install pygame openai
 ```
-3. Navigate to the directory where you stored the game files. Run beaver.py to start playing. You can do this from the command line:
+3. You also need to generate your own OpenAI key (from here: https://platform.openai.com/account/api-keys). Then, inside the 'beavUp' folder, click the file: 'gpt.py' and replace the key on line 5. For security reasons, NEVER copy-paste the key as plaintext if you plan to publish code online. It is highly recommended to read the key as encrypted text from a separate file.
+
+4. Navigate to the directory where you stored the game files. Run beaver.py to start playing. You can do this from the command line:
 ```
 python beavUp.py
 ```
@@ -29,7 +31,7 @@ Enjoy "Super Beaver Bros: An AI Adventure"! Navigate your beaver through the obs
 
 ## Credits
 
-- Kaitlyn Hornbuckle: hornbuck@oregonstate.edu (Discord: 1meeka2)
+- Kaitlyn Hornbuckle: hornbuck@oregonstate.edu
 
 - scotts_Tots (Discord)
 
@@ -40,8 +42,6 @@ Enjoy "Super Beaver Bros: An AI Adventure"! Navigate your beaver through the obs
 ## Acknowledgements
 
 We would like to express our gratitude to [@ClearCode](https://www.youtube.com/@ClearCode) on YouTube and the maintainers and contributors of [Pygame](https://www.pygame.org/wiki/about). Their tutorials and coding guides were invaluable resources in the development of our game.
-
-// TODO: Add your team's names and any acknowledgements you'd like to include.
 
 ## Feedback and Contributions
 
